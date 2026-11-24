@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GrativeTools AI Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#f4faee;--bg2:#ffffff;--ink:#0d1a07;--mute:#55684a;--line:#d9e8cc;--acc:#a8f03c;--acc2:#6fd13a;--accink:#0d1a07;--glow:rgba(140,230,60,.35)}
@@ -11,7 +12,7 @@
 :root[data-theme="dark"]{--bg:#080b06;--bg2:#12180d;--ink:#f2fbe8;--mute:#93a583;--line:#232d19;--glow:rgba(168,240,60,.25)}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,"SF Pro Display",Inter,system-ui,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;color:inherit;background:none}
 .wrap{max-width:1100px;margin:auto;padding:0 18px}
@@ -97,27 +98,121 @@ select{background:var(--bg);color:var(--ink);border:1px solid var(--line);border
 footer{padding:26px 0 40px;color:var(--mute);font-size:13px;text-align:center}
 .note{font-size:12px;color:var(--mute);margin-top:10px}
 @media(max-width:700px){.links{display:none}}
+@media(max-width:520px){#upg{display:none}}
+.md{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px}
+.md[hidden]{display:none}
+.mb{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:22px;width:100%;max-width:380px;position:relative;animation:pop .25s}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.mb input{width:100%;margin:6px 0;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.mb input:focus{outline:2px solid var(--acc2)}
+.x{position:absolute;right:14px;top:8px;font-size:28px;color:var(--mute);line-height:1}
+.wide{width:100%;justify-content:center;margin-top:8px}
+.or{text-align:center;color:var(--mute);font-size:12px;margin:12px 0 4px}
+.err{color:#e5484d;font-size:13px;min-height:18px;margin-top:2px}
+.sw{text-align:center;font-size:13px;color:var(--mute);margin-top:12px}
+.sw a{color:var(--acc2);font-weight:700}
+.mb h3{font-size:22px;letter-spacing:-.02em}
+.mb .sub{font-size:14px;margin:4px 0 14px}
+body:before{content:"";position:fixed;inset:-15% -10% auto;height:75vh;z-index:-1;pointer-events:none;background:radial-gradient(40% 50% at 18% 30%,var(--glow),transparent 70%),radial-gradient(34% 44% at 82% 18%,rgba(60,220,190,.28),transparent 70%),radial-gradient(40% 50% at 55% 75%,rgba(190,255,90,.24),transparent 70%);filter:blur(34px);animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(4%,7%,0) scale(1.14)}}
+nav{margin:10px 12px 0;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--bg2) 58%,transparent);backdrop-filter:blur(22px) saturate(1.7)}
+nav .wrap{position:relative;padding:0 14px}
+.ib{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;background:color-mix(in srgb,var(--bg2) 70%,transparent);transition:.2s}
+.ib:hover{background:var(--acc);color:var(--accink)}
+.credit{background:color-mix(in srgb,var(--bg2) 70%,transparent)}
+.studio,.card,.plan{background:color-mix(in srgb,var(--bg2) 56%,transparent);backdrop-filter:blur(18px) saturate(1.6);border-color:color-mix(in srgb,var(--ink) 9%,transparent)}
+.card{position:relative}
+.card:after,.plan:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:.3s;background:radial-gradient(200px circle at var(--mx,50%) var(--my,0%),var(--glow),transparent 70%)}
+.card:hover:after,.plan:hover:after{opacity:1}
+.rv{opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.sp2{display:flex;align-items:center;gap:10px;width:min(440px,100%);margin:22px auto 0;padding:13px 16px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg2) 60%,transparent);backdrop-filter:blur(18px);color:var(--mute);font-size:14px;transition:.25s}
+.sp2:hover{transform:translateY(-2px);border-color:var(--acc2);box-shadow:0 12px 30px -14px var(--glow)}
+.sp2 kbd{margin-left:auto;font-size:11px;font-weight:600;padding:2px 7px;border:1px solid var(--line);border-radius:6px}
+.pal{max-width:520px;align-self:start;margin-top:12vh}
+.pal #qr button{display:flex;align-items:center;gap:10px;width:100%;padding:10px;border-radius:12px;text-align:left}
+.pal #qr button:hover{background:var(--acc);color:var(--accink)}
+.pal #qr em{margin-left:auto;font-size:11px;font-style:normal;color:var(--mute)}
+.flow{display:flex;align-items:center;overflow-x:auto;padding:14px 2px;scrollbar-width:none}
+.nd{min-width:132px;padding:14px;border-radius:18px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 70%,transparent);display:grid;gap:3px;transition:.4s}
+.nd .ic{width:32px;height:32px;border-radius:10px;background:var(--acc);color:var(--accink);display:grid;place-items:center;margin-bottom:6px}
+.nd small{color:var(--mute);font-size:12px}
+.nd.run{border-color:var(--acc2);box-shadow:0 0 0 4px var(--glow);transform:translateY(-3px)}
+.ln{flex:0 0 36px;height:2px;background:var(--line);position:relative}
+.ln i{position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 10px var(--acc);animation:fl 1.5s linear infinite}
+@keyframes fl{to{left:calc(100% - 8px)}}
+.faq details{background:color-mix(in srgb,var(--bg2) 58%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq p{color:var(--mute);font-size:14px;margin-top:8px}
+.bigf{background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--accink);border-radius:28px;padding:28px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:22px;text-align:left}
+.bigf h4{opacity:.55;font-size:12px;margin-bottom:8px}
+.bigf a{display:block;font-weight:700;font-size:15px;margin:6px 0}
+.pm{position:absolute;right:14px;top:60px;min-width:190px;padding:8px;border-radius:16px;background:color-mix(in srgb,var(--bg2) 88%,transparent);backdrop-filter:blur(22px);border:1px solid var(--line);box-shadow:0 24px 50px -22px rgba(0,0,0,.45)}
+.pm[hidden]{display:none}
+.pm a,.pm button{display:block;width:100%;text-align:left;padding:10px;border-radius:10px;font-size:14px}
+.pm a:hover,.pm button:hover{background:var(--acc);color:var(--accink)}
+#pme{padding:6px 10px;font-size:12px;color:var(--mute);word-break:break-all}
+@media(max-width:520px){nav .wrap{gap:8px}.credit{padding:6px 9px;font-size:12px}}
+:root{--logo:url(data:image/png;base64,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);--spring:cubic-bezier(.34,1.56,.64,1)}
+.lgi{display:inline-block;width:36px;height:36px;background:var(--logo) center/contain no-repeat;filter:drop-shadow(0 0 10px var(--glow));transition:transform .6s var(--spring)}
+.logo{font-family:"Barlow Condensed",-apple-system,Inter,sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:.03em}
+.logo:hover .lgi{transform:rotate(-14deg) scale(1.12)}
+.hl{width:96px;height:96px;margin:0 auto 14px;background:var(--logo) center/contain no-repeat;filter:drop-shadow(0 14px 34px var(--glow));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes spin{to{transform:rotate(1turn)}}
+h2{font-family:"Barlow Condensed",-apple-system,Inter,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(30px,6vw,44px)}
+.btn{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 6px 18px -6px var(--glow),inset 0 1px 0 rgba(255,255,255,.55);transition:transform .35s var(--spring),box-shadow .3s}
+.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.65) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s;pointer-events:none}
+.btn:hover:after{transform:translateX(120%)}
+.btn:active{transform:scale(.95)}
+.btn.ghost{background:color-mix(in srgb,var(--bg2) 62%,transparent);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+#go{animation:glowp 2.6s ease-in-out infinite}
+@keyframes glowp{50%{box-shadow:0 0 0 6px var(--glow),0 10px 34px -6px var(--glow)}}
+.studio,.plan{border-radius:28px;box-shadow:0 30px 70px -42px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.card{border-radius:22px}
+.car{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;position:relative;padding:4px 0 8px}
+.car::-webkit-scrollbar{display:none}
+.ad{flex:0 0 min(86%,430px);height:236px;scroll-snap-align:start;position:relative;overflow:hidden;border-radius:28px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;box-shadow:0 22px 50px -26px var(--glow)}
+.ad:before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0 55%,rgba(255,255,255,.38) 75%,transparent 90%);animation:spin 10s linear infinite}
+.ad:after{content:"";position:absolute;right:-18px;top:-14px;width:150px;height:150px;background:var(--logo) center/contain no-repeat;opacity:.28;animation:float 6s ease-in-out infinite}
+.ad>*{position:relative;z-index:1}
+.ad .bd{position:absolute;left:20px;top:20px;font-size:11px;font-weight:800;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.9);color:#0d1a07}
+.ad h3{font:800 40px/1 "Barlow Condensed",Inter,sans-serif;text-transform:uppercase;letter-spacing:.01em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.ad p{font-size:14px;opacity:.92;margin-bottom:8px}
+.ad .btn{align-self:flex-start;background:#fff;color:#0d1a07}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.dots i{width:6px;height:6px;border-radius:99px;background:var(--line);transition:.4s var(--spring)}
+.dots i.on{width:22px;background:var(--acc2)}
+.tile.load:before{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;background:var(--logo) center/contain no-repeat;animation:spin 1.4s linear infinite;z-index:1}
+.card .art{position:relative;overflow:hidden}
+.card .art:before{content:"";position:absolute;right:-14px;bottom:-18px;width:90px;height:90px;background:var(--logo) center/contain no-repeat;opacity:.2;transition:.5s var(--spring)}
+.card:hover .art:before{transform:rotate(25deg) scale(1.25);opacity:.35}
+.footlogo{display:block;width:56px;height:56px;background:var(--logo) center/contain no-repeat;margin-bottom:8px}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
-<a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d6ff7a"/><stop offset="1" stop-color="#6fd13a"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M21.4 11.5A7 7 0 1 0 23 16H16" fill="none" stroke="#0d1a07" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 5.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z" fill="#0d1a07"/></svg><span>Grative<b>Tools</b></span><em class="ai">AI</em></a>
-<div class="links"><a href="#create">Create</a><a href="#tools">Tools</a><a href="#models">Models</a><a href="#pricing">Pricing</a></div>
-<div class="sp"></div>
+<a class="logo" href="#top"><i class="lgi"></i><span>Grative<b>Tools</b></span><em class="ai">AI</em></a>
+<div class="links"><a href="#create">Create</a><a href="#tools">Tools</a><a href="#models">Models</a><a href="#agents">Agents</a><a href="#pricing">Pricing</a></div>
+<div class="sp"></div><button class="ib" id="sb2" aria-label="Search"><span data-ic="search" class="ic"></span></button>
 <span class="credit"><span data-ic="bolt" class="ic" style="color:var(--acc2)"></span><b id="cr">50</b> credits</span>
-<a class="btn" href="#pricing">Upgrade</a>
+<button class="btn ghost" id="authBtn">Login</button>
+<div class="pm" id="pm" hidden><div id="pme"></div><a href="#pricing">Plan &amp; credits</a><button id="lo">Logout</button></div>
+<a class="btn" id="upg" href="#pricing">Upgrade</a>
 </div></nav>
 
 <main id="top">
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap"><div class="hl"></div>
 <span class="tag"><b>NEW</b> · Video + Image + Audio, ek hi jagah</span>
 <h1>Create <em>cinematic</em> AI<br>images &amp; videos</h1>
 <p>Saare top AI models ek workspace mein. Prompt likho, generate karo, apne account se credits use karo.</p>
 <div class="row"><a class="btn" href="#create">Start creating →</a><a class="btn ghost" href="#tools">Explore tools</a></div>
+<button class="sp2" id="sb3"><span data-ic="search" class="ic"></span>Search tools, models, agents…<kbd>Ctrl K</kbd></button>
 </div></header>
 
 <div class="marq"><div id="mq"></div></div>
 
+<section id="feat"><div class="wrap"><div class="car" id="car"></div><div class="dots" id="dots"></div></div></section>
 <section id="create"><div class="wrap">
 <h2>AI Studio</h2><p class="sub">Prompt likho, mode chuno, Generate dabao.</p>
 <div class="studio">
@@ -141,6 +236,8 @@ footer{padding:26px 0 40px;color:var(--mute);font-size:13px;text-align:center}
 <div class="grid" id="grid"></div>
 </div></section>
 
+<section id="agents"><div class="wrap"><h2>Agents &amp; Automations</h2><p class="sub">n8n jaisa flow: trigger, AI agent, tool aur publish, ek line mein.</p>
+<div class="studio"><div class="chips" id="ft"></div><div class="flow" id="fl"></div><div class="opts"><span class="sp"></span><button class="btn" id="rn"><span data-ic="bolt" class="ic"></span>Run workflow</button></div><p class="note">Demo flow. Asli automation ke liye backend scheduler (n8n ya Cloudflare cron) chahiye.</p></div></div></section>
 <section id="models"><div class="wrap">
 <h2>Top models</h2><p class="sub">Sab ek subscription mein.</p>
 <div class="models" id="mods"></div>
@@ -153,9 +250,16 @@ footer{padding:26px 0 40px;color:var(--mute);font-size:13px;text-align:center}
 <p class="note">Prices illustrative hain. Payment ke liye Razorpay/Stripe + webhook backend chahiye.</p>
 </div></section>
 
+<section id="faq"><div class="wrap"><h2>FAQ</h2><div class="faq">
+<details><summary>Credits kaise kaam karte hain?</summary><p>Har generation par model ke hisaab se credits kat te hain. Plan ke saath mahine ke credits milte hain.</p></details>
+<details><summary>Kitni images ya videos ban sakti hain?</summary><p>Image sasti hoti hai, video zyada credits leti hai. Model aur length par depend karta hai.</p></details>
+<details><summary>Kya subscription auto renew hota hai?</summary><p>Haan, jab tak aap cancel na karein.</p></details>
+<details><summary>Kya GrativeTools free hai?</summary><p>Signup par free credits milte hain, baaki ke liye plan lena hoga.</p></details>
+</div></div></section>
 <div class="wrap"><div class="cta"><h2>Ready to create?</h2><p style="margin:6px 0 16px">Free account banao, 50 credits turant.</p><a class="btn" href="#create">Get started free</a></div></div>
 </main>
-<footer>© GrativeTools AI · Create. Edit. Ship.</footer>
+<footer><div class="wrap"><div class="bigf"><div><i class="footlogo"></i><h4>GrativeTools AI</h4><a href="#top">Create. Edit. Ship.</a></div><div><h4>Create</h4><a href="#create">AI Image</a><a href="#create">AI Video</a><a href="#create">Audio</a><a href="#tools">Edit &amp; Upscale</a></div><div><h4>Models</h4><a href="#models">Seedance</a><a href="#models">Kling</a><a href="#models">Veo</a><a href="#models">Nano Banana</a></div><div><h4>Platform</h4><a href="#agents">Agents</a><a href="#agents">Automations</a><a href="#pricing">Pricing</a></div><div><h4>Company</h4><a href="#faq">FAQ</a><a href="#top">Home</a></div></div><p style="margin-top:18px">© GrativeTools AI · Create. Edit. Ship.</p></div></footer>
+<div class="md" id="pal" hidden><div class="mb pal"><input id="q" placeholder="Search tools, models, agents…" autocomplete="off"><div id="qr"></div></div></div>
 
 <script>
 const $=s=>document.querySelector(s);
@@ -173,7 +277,12 @@ const tools=[
 ["Edit","layers","Video Effects","100+ one-click presets","#baf46a","#17612f"],
 ["Apps","chat","AI Chat","Writing + ideas + code","#a6ee5a","#1b5e2b"],
 ["Apps","mega","Ad Maker","Product ad ek click mein","#d0fb86","#357f2d"],
-["Apps","phone","Shorts Maker","Reels/Shorts ready","#97e84e","#0e4a22"]];
+["Apps","phone","Shorts Maker","Reels/Shorts ready","#97e84e","#0e4a22"],
+["Image","swap","Face Swap","Chehra badlo","#c9fa7a","#2e8b3f"],
+["Video","crop","Reframe","9:16 / 1:1 auto crop","#a9f063","#1a5a30"],
+["Apps","user","AI Influencer","Virtual creator banao","#d4fb8c","#378a35"],
+["Apps","agent","Agent Builder","Apna AI assistant","#9aea55","#12512a"],
+["Apps","flow","Automations","n8n jaise workflows","#bdf56e","#206a36"]];
 const IC={
 image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-5-5L5 21"/>',
 video:'<rect x="2" y="5" width="14" height="14" rx="3"/><path d="m22 8-6 4 6 4z"/>',
@@ -191,29 +300,37 @@ wand:'<path d="m4 20 11-11M14 4l1.5 3L19 8.5 15.5 10 14 13l-1.5-3L9 8.5 12.5 7z"
 layers:'<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
 chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/>',
 mega:'<path d="M3 10v4a1 1 0 0 0 1 1h3l8 4V5L7 9H4a1 1 0 0 0-1 1zM19 9a4 4 0 0 1 0 6"/>',
-phone:'<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>'};
+phone:'<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+swap:'<path d="M7 7h11l-3-3M17 17H6l3 3"/>',
+agent:'<rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 16.5h6"/>',
+flow:'<circle cx="5" cy="6" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="18" r="2"/><path d="M7 6h4a3 3 0 0 1 3 3M7 18h4a3 3 0 0 0 3-3M14 12h3"/>',
+crop:'<path d="M6 2v14a2 2 0 0 0 2 2h14M2 6h14a2 2 0 0 1 2 2v14"/>'};
 const I=k=>`<svg viewBox="0 0 24 24" fill="${k=="spark"||k=="bolt"?"currentColor":"none"}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 document.querySelectorAll("[data-ic]").forEach(e=>e.innerHTML=I(e.dataset.ic));
 const cats=["All","Image","Video","Audio","Edit","Apps"];
 $("#cats").innerHTML=cats.map((c,i)=>`<button class="${i?"":"on"}" data-c="${c}">${c}</button>`).join("");
 function draw(c){
- $("#grid").innerHTML=tools.filter(t=>c=="All"||t[0]==c).map(t=>`<div class="card" style="--c1:${t[4]};--c2:${t[5]}"><div class="art"><span class="bub">${I(t[1])}</span></div><div class="bd"><h3>${t[2]}</h3><p>${t[3]}</p><span class="pill">${t[0]}</span> <button class="pill" style="background:var(--bg);color:var(--ink);border:1px solid var(--line)" onclick="document.querySelector('#create').scrollIntoView()">Open ↗</button></div></div>`).join("");
+ $("#grid").innerHTML=tools.filter(t=>c=="All"||t[0]==c).map(t=>`<div class="card" style="--c1:${t[4]};--c2:${t[5]}"><div class="art"><span class="bub">${I(t[1])}</span></div><div class="bd"><h3>${t[2]}</h3><p>${t[3]}</p><span class="pill">${t[0]}</span> <button class="pill" style="background:var(--bg);color:var(--ink);border:1px solid var(--line)" onclick="openTool('${t[0]}','${t[2]}')">Open ↗</button></div></div>`).join("");
  document.querySelectorAll(".card").forEach((e,i)=>setTimeout(()=>e.classList.add("in"),40*i));
 }
 $("#cats").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#cats button").forEach(x=>x.classList.remove("on"));b.classList.add("on");draw(b.dataset.c)};
 draw("All");
 const M=["Kling","Veo","Sora","Seedance","Nano Banana","Flux Pro","Midjourney-style","Runway","Wan","Hailuo"];
-$("#mods").innerHTML=M.map(m=>`<span>${m}</span>`).join("");
+const MD={Image:["Nano Banana","Flux 2","Seedream 5","GPT Image 2.6","Ideogram 4.5"],Video:["Seedance 2.5","Kling 3.0","Kling 4.0","Veo 3.1","Wan 2.6"],Audio:["Voiceover","Music","Lipsync"]};
+const fillModels=m=>{$("#md").innerHTML=MD[m].map(x=>`<option>${x}</option>`).join("")};fillModels("Image");
+$("#mods").innerHTML=Object.entries(MD).map(([k,v])=>`<div style="flex-basis:100%"><b style="font-size:13px;color:var(--mute)">${k} models</b></div>`+v.map(m=>`<span>${m}</span>`).join("")).join("");
 $("#mq").innerHTML=[...M,...M].map(m=>`<span>${I("spark")}${m}</span>`).join("");
-document.querySelectorAll("#mode button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#mode button").forEach(x=>x.classList.remove("on"));b.classList.add("on")});
-let cr=50;
+document.querySelectorAll("#mode button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#mode button").forEach(x=>x.classList.remove("on"));b.classList.add("on");fillModels(b.dataset.m)});
+let cr=50;window.setCr=n=>{cr=n;$("#cr").textContent=n};
 $("#go").onclick=()=>{
  if(!$("#pr").value.trim()){$("#pr").focus();return}
+ if(window.GT&&GT.ready&&!GT.user){window.openAuth();return}
  if(cr<4){location.hash="pricing";return}
  const n=parseInt($("#n").value),pal=[["#a8f03c","#14532d"],["#d6ff7a","#2f8f2a"],["#8fe64a","#0f3d1e"],["#c4f58a","#1f7a4d"]];
  $("#out").innerHTML=Array.from({length:n},(_,i)=>`<div class="tile load" style="--c1:${pal[i%4][0]};--c2:${pal[i%4][1]};aspect-ratio:${$("#ar").value.replace(":","/")}"></div>`).join("");
- cr-=4;$("#cr").textContent=cr;
- setTimeout(()=>document.querySelectorAll(".tile").forEach((t,i)=>{t.classList.remove("load");t.innerHTML=`<span>${$("#md").value} · demo ${i+1}</span>`}),1800);
+ if(!window.GT_API){cr-=4;$("#cr").textContent=cr;if(window.GT&&GT.spend)GT.spend(4)}
+ runGen();
 };
 const P=[["Free",0,"Explore karo",["50 credits","Image generation","Watermark","Community gallery"],0],
 ["Creator",499,"Roz banane walon ke liye",["1,500 credits/mo","Image + Video","No watermark","Character ID","Priority queue"],1],
@@ -222,6 +339,124 @@ let yr=false;
 function plans(){$("#plans").innerHTML=P.map(p=>`<div class="plan ${p[4]?"hot":""}">${p[4]?'<span class="pill">MOST POPULAR</span>':""}<h3>${p[0]}</h3><p style="color:var(--mute);font-size:13px">${p[2]}</p><div class="price">₹${Math.round(p[1]*(yr?.7:1))}<small> /month</small></div><ul>${p[3].map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn ${p[4]?"":"ghost"}" href="#create">${p[1]?"Choose "+p[0]:"Start free"}</a></div>`).join("")}
 $("#tg").onclick=e=>{yr=!yr;e.currentTarget.classList.toggle("on");plans()};
 plans();
+// BACKEND: backend ready hone par yahan URL daalo (Cloudflare Worker). Khali = demo mode.
+window.GT_API="";
+const curMode=()=>document.querySelector("#mode .on").dataset.m;
+async function runGen(){
+ const tiles=[...document.querySelectorAll(".tile")];
+ if(!window.GT_API){setTimeout(()=>tiles.forEach((t,i)=>{t.classList.remove("load");t.innerHTML=`<span>${$("#md").value} · demo ${i+1}</span>`}),1800);return}
+ try{
+  const tk=window.GT&&GT.user?await GT.user.getIdToken():"";
+  const H={"Content-Type":"application/json",Authorization:"Bearer "+tk};
+  const r=await fetch(window.GT_API+"/generate",{method:"POST",headers:H,body:JSON.stringify({mode:curMode(),model:$("#md").value,prompt:$("#pr").value,ratio:$("#ar").value,count:tiles.length})});
+  let d=await r.json();if(!r.ok)throw new Error(d.error||"Error");
+  const job=d.job;
+  for(let k=0;job&&k<75;k++){await new Promise(z=>setTimeout(z,4000));const p=await fetch(window.GT_API+"/job/"+job,{headers:H});d=await p.json();if(d.status==="failed")throw new Error(d.error||"Failed");if(d.status==="done")break}
+  if(d.credits!=null)setCr(d.credits);
+  tiles.forEach((t,i)=>{const u=(d.urls||[])[i];t.classList.remove("load");t.style.background="#000";t.innerHTML=u?(d.type==="video"?`<video src="${u}" controls playsinline loop style="width:100%;height:100%;object-fit:cover"></video>`:d.type==="audio"?`<audio src="${u}" controls style="width:100%;margin-top:40%"></audio>`:`<img src="${u}" alt="" style="width:100%;height:100%;object-fit:cover">`):""});
+ }catch(e){tiles.forEach(t=>{t.classList.remove("load");t.innerHTML="<span>"+e.message+"</span>"})}
+}
+window.openTool=(c,n)=>{
+ if(/Agent|Automation/.test(n)){document.querySelector("#agents").scrollIntoView();return}
+ const m=c=="Audio"?"Audio":c=="Video"?"Video":"Image";
+ document.querySelector(`#mode [data-m="${m}"]`).click();
+ $("#pr").placeholder=n+": apna idea likho…";
+ document.querySelector("#create").scrollIntoView();
+};
+const pal=$("#pal"),q=$("#q"),qr=$("#qr");
+function rq(){const s=q.value.toLowerCase();const a=[...tools.map(t=>({n:t[2],c:t[0],i:t[1]})),...Object.values(MD).flat().map(x=>({n:x,c:"Model",i:"spark"}))].filter(x=>x.n.toLowerCase().includes(s)).slice(0,8);qr.innerHTML=a.map(x=>`<button data-n="${x.n}" data-c="${x.c}"><span class="ic">${I(x.i)}</span>${x.n}<em>${x.c}</em></button>`).join("")||"<p class='note'>Kuch nahi mila</p>"}
+const openP=()=>{pal.hidden=false;q.value="";rq();q.focus()};
+q.oninput=rq;
+qr.onclick=e=>{const b=e.target.closest("button");if(!b)return;pal.hidden=true;const md=Object.keys(MD).find(k=>MD[k].includes(b.dataset.n));openTool(md||b.dataset.c,b.dataset.n);if(md)$("#md").value=b.dataset.n};
+$("#sb2").onclick=$("#sb3").onclick=openP;
+pal.onclick=e=>{if(e.target===pal)pal.hidden=true};
+addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key=="k"){e.preventDefault();openP()}if(e.key=="Escape")pal.hidden=true});
+const TP={"Daily Shorts":["Schedule|Roz subah 9 baje","AI Agent|Script likho","Video|Seedance 2.5","Publish|YouTube Shorts"],"Product Ad":["Webhook|Naya product","AI Agent|Ad copy","Image|Nano Banana","Publish|Instagram"],"Support Bot":["Message|WhatsApp ya chat","AI Agent|Jawab banao","Audio|Voice reply","Send|Customer ko"]};
+const NI={Schedule:"bolt",Webhook:"bolt",Message:"chat","AI Agent":"agent",Video:"video",Image:"image",Audio:"audio",Publish:"phone",Send:"mega"};
+function flow(k){$("#fl").innerHTML=TP[k].map((s,i)=>{const[t,d]=s.split("|");return(i?'<div class="ln"><i></i></div>':'')+`<div class="nd"><span class="ic">${I(NI[t])}</span><b>${t}</b><small>${d}</small></div>`}).join("");document.querySelectorAll("#ft button").forEach(b=>b.classList.toggle("on",b.dataset.k==k))}
+$("#ft").innerHTML=Object.keys(TP).map(k=>`<button data-k="${k}">${k}</button>`).join("");
+$("#ft").onclick=e=>{const b=e.target.closest("button");if(b)flow(b.dataset.k)};
+flow("Daily Shorts");
+$("#rn").onclick=()=>{const n=[...document.querySelectorAll(".nd")];n.forEach(x=>x.classList.remove("run"));n.forEach((x,i)=>setTimeout(()=>x.classList.add("run"),i*700))};
+const AD=[["Seedance 2.5","Cinematic video up to 30 seconds","Video","TOP","#9ef06a","#0f3d1e"],["Kling 4.0","Next-gen motion and realism","Video","NEW","#d6ff7a","#1f7a4d"],["Veo 3.1","Video with native sound","Video","","#8fe64a","#14532d"],["Nano Banana","Fast image edits and fusion","Image","NEW","#c4f58a","#256d1b"],["Agents","Build AI workflows like n8n","Apps","","#a8f03c","#12512a"],["Shorts Studio","Viral shorts with your voice","Apps","HOT","#baf46a","#17612f"]];
+const car=$("#car"),dots=$("#dots");
+car.innerHTML=AD.map(a=>`<article class="ad" style="--c1:${a[4]};--c2:${a[5]}">${a[3]?`<span class="bd">${a[3]}</span>`:""}<h3>${a[0]}</h3><p>${a[1]}</p><button class="btn" onclick="adGo('${a[2]}','${a[0]==="Agents"?"Agent Builder":a[0]==="Shorts Studio"?"Shorts Maker":a[0]}')">Try now →</button></article>`).join("");
+dots.innerHTML=AD.map(()=>"<i></i>").join("");
+let ci=0,cp=0,ct;
+const setDot=i=>[...dots.children].forEach((d,k)=>d.classList.toggle("on",k==i));setDot(0);
+car.addEventListener("scroll",()=>{ci=Math.round(car.scrollLeft/(car.children[0].offsetWidth+14));setDot(ci)});
+car.addEventListener("pointerdown",()=>{cp=1;clearTimeout(ct);ct=setTimeout(()=>cp=0,7000)});
+setInterval(()=>{if(cp)return;ci=(ci+1)%AD.length;car.scrollTo({left:car.children[ci].offsetLeft,behavior:"smooth"})},3600);
+window.adGo=(c,n)=>{openTool(c,n);if(c==="Image"||c==="Video")$("#md").value=n};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll("section .wrap>*").forEach(e=>{e.classList.add("rv");io.observe(e)});
+document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".card,.plan");if(c){const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}});
+</script>
+<div class="md" id="am" hidden><div class="mb">
+<button class="x" id="mx" aria-label="Close">×</button>
+<i class="lgi" style="margin-bottom:6px"></i><h3 id="mt">Welcome back</h3><p class="sub" id="ms">Login karo, apne credits use karo.</p>
+<button class="btn ghost wide" id="gg"><b style="color:#4285f4;font-size:18px">G</b> Continue with Google</button>
+<div class="or">ya email se</div>
+<input id="em" type="email" placeholder="Email" autocomplete="email">
+<input id="pw" type="password" placeholder="Password (min 6)" autocomplete="current-password">
+<p class="err" id="er"></p>
+<button class="btn wide" id="sb">Login</button>
+<p class="sw"><a href="#" id="swl">Naya account banao</a> · <a href="#" id="fg">Password bhool gaye?</a></p>
+</div></div>
+<script type="module">
+const B="https://www.gstatic.com/firebasejs/10.12.2/";
+const $=s=>document.querySelector(s);
+window.GT={ready:false,user:null};
+let signup=false;
+const show=v=>{$("#am").hidden=!v;$("#er").textContent=""};
+window.openAuth=()=>show(true);
+$("#mx").onclick=()=>show(false);
+$("#am").onclick=e=>{if(e.target.id==="am")show(false)};
+const mode=s=>{signup=s;$("#mt").textContent=s?"Create account":"Welcome back";$("#ms").textContent=s?"Signup karo, 50 free credits pao.":"Login karo, apne credits use karo.";$("#sb").textContent=s?"Sign up":"Login";$("#swl").textContent=s?"Pehle se account hai? Login":"Naya account banao";$("#pw").autocomplete=s?"new-password":"current-password"};
+$("#swl").onclick=e=>{e.preventDefault();mode(!signup)};
+const msg=c=>({"auth/invalid-credential":"Email ya password galat hai.","auth/invalid-email":"Email sahi nahi hai.","auth/email-already-in-use":"Ye email pehle se registered hai. Login karo.","auth/weak-password":"Password kam se kam 6 character ka rakho.","auth/missing-password":"Password daalo.","auth/too-many-requests":"Bahut koshish ho gayi, thodi der baad try karo.","auth/network-request-failed":"Internet check karo.","auth/popup-closed-by-user":"Google window band ho gayi."}[c]||"Kuch galat hua: "+c);
+try{
+const {initializeApp}=await import(B+"firebase-app.js");
+const A=await import(B+"firebase-auth.js");
+const F=await import(B+"firebase-firestore.js");
+const app=initializeApp({apiKey:"AIzaSyDKtrFLbRXJmcovREG5gVfQUA3EtKCf2ho",authDomain:"grativetools-ai-b5283.firebaseapp.com",projectId:"grativetools-ai-b5283",storageBucket:"grativetools-ai-b5283.firebasestorage.app",messagingSenderId:"781310933757",appId:"1:781310933757:web:9437af7673db8087941c94"});
+const auth=A.getAuth(app),db=F.getFirestore(app);
+GT.ready=true;
+A.onAuthStateChanged(auth,async u=>{
+ GT.user=u;
+ $("#authBtn").textContent=u?(u.email||"M")[0].toUpperCase():"Login";$("#pme").textContent=u?(u.email||""):"";if(!u)$("#pm").hidden=true;
+ if(!u){setCr(0);return}
+ show(false);
+ try{
+  const ref=F.doc(db,"users",u.uid),s=await F.getDoc(ref);
+  if(s.exists())setCr(s.data().credits);
+  else{await F.setDoc(ref,{credits:50,email:u.email||"",created:F.serverTimestamp()});setCr(50)}
+ }catch(e){console.warn(e);$("#er").textContent="";setCr(0);alert("Credits load nahi hue. Firestore database aur rules check karo.")}
+});
+GT.spend=async n=>{if(!GT.user)return;try{await F.updateDoc(F.doc(db,"users",GT.user.uid),{credits:F.increment(-n)})}catch(e){console.warn(e)}};
+$("#authBtn").onclick=()=>GT.user?($("#pm").hidden=!$("#pm").hidden):show(true);$("#lo").onclick=()=>A.signOut(auth);
+$("#sb").onclick=async()=>{
+ const e=$("#em").value.trim(),p=$("#pw").value;
+ if(!e||!p){$("#er").textContent="Email aur password daalo.";return}
+ $("#sb").disabled=true;
+ try{signup?await A.createUserWithEmailAndPassword(auth,e,p):await A.signInWithEmailAndPassword(auth,e,p)}catch(x){$("#er").textContent=msg(x.code)}
+ $("#sb").disabled=false;
+};
+$("#gg").onclick=async()=>{
+ const g=new A.GoogleAuthProvider();
+ try{await A.signInWithPopup(auth,g)}catch(x){
+  if(x.code==="auth/popup-blocked"||x.code==="auth/operation-not-supported-in-this-environment"){await A.signInWithRedirect(auth,g)}else $("#er").textContent=msg(x.code)}
+};
+$("#fg").onclick=async ev=>{
+ ev.preventDefault();
+ const e=$("#em").value.trim();
+ if(!e){$("#er").textContent="Pehle email daalo.";return}
+ try{await A.sendPasswordResetEmail(auth,e);$("#er").style.color="var(--acc2)";$("#er").textContent="Reset link email par bhej diya."}catch(x){$("#er").style.color="";$("#er").textContent=msg(x.code)}
+};
+}catch(e){
+ console.warn(e);
+ $("#authBtn").onclick=()=>{show(true);$("#er").textContent="Login sirf live website par chalta hai (Firebase yahan load nahi hua)."};
+}
 </script>
 </body>
 </html>
