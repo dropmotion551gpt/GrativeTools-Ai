@@ -394,7 +394,7 @@ $("#tg").onclick=e=>{yr=!yr;e.currentTarget.classList.toggle("on");plans()};
 $("#plans").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(window.GT&&GT.ready&&!GT.user){window.openAuth();return}alert("Payment gateway (Stripe/Paddle) abhi jodna baaki hai.")};
 plans();
 // BACKEND: backend ready hone par yahan URL daalo (Cloudflare Worker). Khali = demo mode.
-window.GT_API="";
+window.GT_API="https://rough-king-864d.bosssahil434.workers.dev";
 const curMode=()=>document.querySelector("#mode .on").dataset.m;
 async function runGen(){
  const tiles=[...document.querySelectorAll(".tile")];
